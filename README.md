@@ -1,5 +1,3 @@
----
-
 ## 🔍 各フォルダの概要
 
 | フォルダ名             | 内容 |
@@ -9,23 +7,30 @@
 | `99_codes_for_ASM/`    | Fresnel伝搬や画像生成のPythonスクリプト |
 | `99_codes_for_Mie/`    | ローレンツ–Mie理論に基づく散乱場評価コード（Python, Julia） |
 
----
 
 ## 📁 ディレクトリ構成
+```
 nearfield-mie/
 ├── 00_ASM/ # Fresnel近似でのホログラム画像（Obj, Holo）
+│
 ├── 00_Mie/ # Mie散乱結果の画像とデータファイル
 │ ├── data/ # 強度データファイル（.dat）
 │ ├── figs/ # 散乱画像（contour, heatmap, smooth）
 │ └── images/ # 整形済み画像素材など
+│
 ├── 99_codes_for_ASM/ # ASM用Pythonコード（シミュレーション＋描画）
+│ ├── 01_ASM.py # 各スペクトル法
+│ └── 02_graph_for_ASM.py # データ可視化
+│
 ├── 99_codes_for_Mie/ # Mie散乱コード（Python/Julia）
 │ ├── 01_Mie.py # 任意精度版（mpmath使用のため，実行にかなり時間がかかる）
+│ ├── 02_graph_for_MIE.py # データ可視化
 │ ├── Mie_data.jl # Julia版（高精度）
 │ ├── Mie_scipy.py # SciPy版（透過粒子向け）
-│ ├── 02_graph_for_MIE.py # データ可視化
 │ └── Mie_data.jl # Julia実装版（重複なら整理してもOK）
+│
 └── README.md # このファイル
+```
 
 ### `00_ASM.py`
 
@@ -54,7 +59,7 @@ nearfield-mie/
 
 **出力先：** `00_ASM/figs/`
 
-> 💡 論文・発表資料にそのまま使えるよう、フォントは Times New Roman + Computer Modern に設定されています。
+> 💡 フォントは Times New Roman + Computer Modern に設定されています。
 > フォントパスは環境に応じて調整してください。
 
 
@@ -84,7 +89,7 @@ nearfield-mie/
 
 **出力先：** `00_Mie/figs/`
 
-> ⚠️ 論文や発表スライドでの利用を想定して、Times New Roman + Computer Modern のフォント指定が含まれています。環境によってはパスを調整してください。
+> ⚠️ Times New Roman + Computer Modern のフォント指定が含まれています。環境によってはパスを調整してください。
 
 
 ### `Mie_data.jl`
@@ -116,8 +121,8 @@ SciPyベースでローレンツ–Mie理論を実装し、透明球状粒子に
 
 ## 技術的な補足（数値精度と実装上の課題）
 
-- SciPyによるローレンツ–Mie理論の実装では、粒子サイズが大きく屈折率に虚部がある（不透過粒子）場合において、
-  **球ベッセル関数の桁あふれ**（オーバーフロー）が発生。
+- SciPyによるローレンツ–Mie理論の実装では、不透過粒子の場合において、
+  **オーバーフロー**が発生。
 - この問題を解決するために、以下の代替実装を行った：
   - Julia (`Mie_data.jl`): 高精度 Bessel 関数と Legendre 多項式を使用
   - Python (`mpmath`): 任意精度演算による安定した評価
