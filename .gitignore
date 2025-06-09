@@ -1,0 +1,44 @@
+# Python関連
+__pycache__/
+*.pyc
+*.pyo
+*.ipynb_checkpoints/
+
+# Julia関連
+*.jl.cov
+.julia/
+
+# VSCodeや他IDEの設定
+.vscode/
+*.code-workspace
+
+# 実行・中間ファイル
+*.exe
+*.out
+*.o
+*.a
+*.so
+*.dll
+
+# 一時ファイル
+*.tmp
+*.log
+*.bak
+
+# OSのゴミ
+.DS_Store
+Thumbs.db
+
+# Latex関連
+*.aux
+*.toc
+*.synctex.gz
+
+# 画像など
+*.png
+*.jpg
+*.jpeg
+*.svg
+*.pdf
+*.dat
+*.csv
