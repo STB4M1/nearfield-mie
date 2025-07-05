@@ -235,7 +235,7 @@ end
 finish!(p)
 
 # === 出力先の設定 ===
-output_dir = "../data"  # ここで自由にフォルダ名を指定
+output_dir = "../00_Mie/data"  # ここで自由にフォルダ名を指定
 mkpath(output_dir)  # フォルダがなければ自動作成
 
 # 出力ファイルパス
